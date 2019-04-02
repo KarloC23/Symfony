@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+{% block title %}Numeri'pic{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+<style>
+    /* variable */
+    /* must have*/
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+
+    body {
+        background-color: white;
+        font-family: sans-serif;
+    }
+
+    .card {
+        position: relative;
+        width: 300px;
+        height: 450px;
+        background-color: white;
+        margin: 2rem auto;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        -webkit-box-shadow: 0 0 100px 40px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 100px 40px rgba(0, 0, 0, 0.2);
+        /* card:hover*/
+    }
+
+    .card .card__mini {
+        background-color: #183c1b;
+    }
+
+    .card .card__mini img {
+        width: 100%;
+    }
+
+    .card .card__date {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        height: 2rem;
+        width: 4rem;
+        border-radius: 50%;
+        background-color: #84cf8a;
+        color: white;
+        text-align: center;
+        font-size: 1.0rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding-top: 0.3rem;
+        margin-top: 1rem;
+    }
+
+    .card .card__body {
+        position: relative;
+        padding: 1rem;
+        background-color: #fff;
+        /* styling of the text */
+    }
+
+    .card .card__body .card__category {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        background-color: #84cf8a;
+        color: white;
+        font-weight: bold;
+        padding: 0.3rem;
+    }
+
+    .card .card__body .card__title {
+        color: #84cf8a;
+    }
+
+    .card .card__body .card___subtitle {
+        font-weight: bold;
+    }
+
+    .card:hover {
+        -webkit-box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.2);
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    .card:hover .card__mini img {
+        -webkit-transform: scale(1.3) rotate(12deg);
+        transform: scale(1.3) rotate(12deg);
+        opacity: 0.6;
+    }
+
+    .card:hover .card__body {
+        -webkit-transform: translateY(-160px);
+        transform: translateY(-160px);
+    }
+
+    #setofcards {
+        display: flex;
+    }
+
+
+    /*# sourceMappingURL=style.css.map */
+</style>
+{% endblock %}
+
+
+
+{% block body %}
+
+    <p>The color of the day is {{ color|default('red') }} </p>
+<div id="setofcards">
+    <article class="card">
+    <header class='card__mini'>
+        <img src="https://picsum.photos/200/300" />
+    </header>
+    <div class="card__date">
+        <span class="card__date__day">15</span>
+        <span class="card__date__month">fev</span>
+    </div>
+    <div class="card__body">
+        <div class="card__category">Photos</div>
+        <h2 class="card__title">Homer et Bart réparent le toit</h2>
+        <div class="card___subtitle">Ca va mal finir cette histoire</div>
+        <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.</p>
+    </div>
+</article>
+    <article class="card">
+        <header class='card__mini'>
+            <img src="https://picsum.photos/300/300" />
+        </header>
+        <div class="card__date">
+            <span class="card__date__day">15</span>
+            <span class="card__date__month">fev</span>
+        </div>
+        <div class="card__body">
+            <div class="card__category">Photos</div>
+            <h2 class="card__title">Homer et Bart réparent le toit</h2>
+            <div class="card___subtitle">Ca va mal finir cette histoire</div>
+            <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.</p>
+        </div>
+    </article>
+    <article class="card">
+        <header class='card__mini'>
+            <img src="https://picsum.photos/400/300" />
+        </header>
+        <div class="card__date">
+            <span class="card__date__day">15</span>
+            <span class="card__date__month">fev</span>
+        </div>
+        <div class="card__body">
+            <div class="card__category">Photos</div>
+            <h2 class="card__title">Homer et Bart réparent le toit</h2>
+            <div class="card___subtitle">Ca va mal finir cette histoire</div>
+            <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.</p>
+        </div>
+    </article>
+</div>
+{% endblock %}
