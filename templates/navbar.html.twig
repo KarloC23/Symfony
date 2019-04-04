@@ -5,22 +5,38 @@
     .nav-item{
         list-style: none;
     }
+    h1 {
+        font-weight: bold;
+        text-align: center;
+    }
 </style>
+
 <nav>
-<div class="container">
+    <h1>Numeri'pic</h1>
+
+    <div class="container">
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item {% if app.request.attributes.get('_route') == 'homepage' %} active {% endif %}">
-            <a class="nav-link active" href="{{ path('homepage') }}">Home</a>
+            <a class="nav-link active" href="{{ path('homepage') }}">
+            {{ 'NAV.HOME'|trans }}
+            </a>
         </li>
         <li class="nav-item {% if app.request.attributes.get('_route') == 'term_of_service' %} active {% endif %}">
-            <a class="nav-link" href="{{ path('term_of_service') }}">Terms</a>
+            <a class="nav-link" href="{{ path('term_of_service') }}">
+            {{ 'NAV.TERMS'|trans }}
+            </a>
         </li>
-        <ul class="nav-item">
             <li class="nav-item {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
-            <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+            <a class="nav-link" href="{{ path('app_login') }}">
+                {{ 'NAV.LOGIN'|trans }}
+            </a>
         </li>
+            <li class="nav-item {% if app.request.attributes.get('_route') == 'app_register' %} active {% endif %}">
+                <a class="nav-link" href="{{ path('app_register') }}">
+                    {{ 'NAV.REGISTER'|trans }}
+                </a>
+            </li>
         </ul>
-    </ul>
-</div>
+    </div>
 </nav>
 

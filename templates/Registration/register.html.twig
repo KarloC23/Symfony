@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+        {% block stylesheets %}
+            <head>
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+            <style>
+#registration_form div {
+    margin: 1rem;
+}
+#registration_form div input {
+    margin-left: 1rem;
+}
+
+            </style>
+            </head>
+        {% endblock %}
+{% block body %}
+    <h1>Register</h1>
+
+{{ form (registrationForm) }}
+{% endblock %}
