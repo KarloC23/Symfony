@@ -2,7 +2,8 @@ NAV.HOME:                 'Home'
 NAV.TERMS:                'Terms'
 NAV.LOGIN:                'Login'
 NAV.REGISTER:             'Register'
-
+NAV.LOGOUT:               'Logout'
+NAV.LOGGED_AS:            'Logged as %name%'
 
 LOGIN.INFO:               'Please sign in'
 LOGIN.USERNAME.LABEL:     'Username'
