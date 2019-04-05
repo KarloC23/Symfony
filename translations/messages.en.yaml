@@ -21,3 +21,16 @@ FORM:
       LABEL: 'Username'
     SUBMIT:
       LABEL3: 'Submit'
+
+MAIL:
+  REGISTER:
+    TITLE: 'Activate your account'
+    INFO: 'Hi %name% your account was created on Numericpic, just one more step and you can post your pictures!'
+    HTML:
+      LINK:
+        INFO: 'Please click'
+        LABEL: 'on this link'
+REGISTRATION:
+  ACTIVATION:
+    TITLE: 'Please active your account'
+    INFO: 'Your account is created please check you email'
