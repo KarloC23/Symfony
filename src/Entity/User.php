@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
- *
+ * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface
 {
@@ -100,11 +100,23 @@ class User implements UserInterface
      */
     private $lovedPictures;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $emailVector;
+
+    private const CIPHER = 'AES-256-CBC';
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->pictures = new ArrayCollection();
         $this->lovedPictures = new ArrayCollection();
+
+        $ivLength = openssl_cipher_iv_length(self::CIPHER);
+        $this->setEmailVector(
+            openssl_random_pseudo_bytes($ivLength)
+        );
     }
 
     public function getId(): ?string
@@ -321,5 +333,56 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    private function getEmailVector(): ?string
+    {
+        return base64_decode($this->emailVector);
+    }
+
+    private function setEmailVector(string $emailVector): self
+    {
+        $this->emailVector = base64_encode($emailVector);
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+
+    public function encryptEmail()
+    {
+        //get email from the user
+        //create a md5 of the username
+        //get the IV
+        //enrypt
+        //set the email back
+        $this->setEmail(
+            openssl_encrypt(
+                $this->getEmail(),
+                self::CIPHER,
+                md5($this->getUsername()),
+                0,
+                $this->getEmailVector()
+            )
+        );
+    }
+
+    /**
+     * @ORM\PostLoad()
+     */
+
+    public function decryptEmail()
+    {
+        $this->setEmail(
+            openssl_decrypt(
+                $this->getEmail(),
+                self::CIPHER,
+                md5($this->getUsername()),
+                0,
+                $this->getEmailVector()
+            )
+        );
     }
 }
