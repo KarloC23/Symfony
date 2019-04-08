@@ -22,7 +22,17 @@ FORM:
       LABEL: 'Username'
     SUBMIT:
       LABEL3: 'Submit'
-
+  PICTURE:
+    TITLE:
+      LABEL: 'Title'
+    DESCRIPTION:
+      LABEL: 'Description'
+    TAGS:
+      LABEL: 'Tags'
+    FILE:
+      LABEL: 'Choose a picture'
+    SUBMIT:
+      LABEL: 'Publish your picture'
 MAIL:
   REGISTER:
     TITLE: 'Activate your account'
