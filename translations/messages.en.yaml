@@ -1,3 +1,5 @@
+HOME:
+  ITEM_COUNT:             'Total pictures count'
 NAV.HOME:                 'Home'
 NAV.TERMS:                'Terms'
 NAV.LOGIN:                'Login'
