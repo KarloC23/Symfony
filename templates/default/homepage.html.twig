@@ -2,7 +2,27 @@
 
 {% block title %}{{ parent() }} - Home{% endblock %}
 
+       {% block stylesheets %}
+           <head>
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+               <style>
+                    * {
+                        transition-duration: 1s;
 
+                    }
+                   .badge.badge-primary {
+                       padding: 0.6rem;
+                       border-radius: 15%;
+
+
+                   }
+                   .badge.badge-primary:hover {
+                       transform: scale(1.1);
+                   }
+
+               </style>
+           </head>
+       {% endblock %}
 
 {% block body %}
 
@@ -17,6 +37,11 @@
                 <h5 class="card-title">{{ picture.getTitle() }}</h5>
                 <p class="card-text">{{ picture.getDescription() }}</p>
             <p class="card-text"><small class="text-muted">{{ picture.getSharer().getUsername() }}</small></p>
+            <p>
+                {% for tag in picture.getTags() %}
+                    <span class="badge badge-primary">{{ tag.getLabel() }}</span>
+                    {% endfor %}
+            </p>
             </div>
         </div>
 

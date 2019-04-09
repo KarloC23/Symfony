@@ -9,6 +9,9 @@ h1 {
 font-weight: bold;
 text-align: center;
 }
+.nav-link.active {
+    margin: 1rem;
+}
 </style>
 
 <nav>
@@ -17,12 +20,12 @@ text-align: center;
 <div class="container">
 <ul class="nav nav-pills nav-fill">
 <li class="nav-item {% if app.request.attributes.get('_route') == 'homepage' %} active {% endif %}">
-    <a class="nav-link" href="{{ path('homepage') }}">
+    <a class="nav-link active" href="{{ path('homepage') }}">
     {{ 'NAV.HOME'|trans }}
     </a>
 </li>
 <li class="nav-item {% if app.request.attributes.get('_route') == 'term_of_service' %} active {% endif %}">
-    <a class="nav-link" href="{{ path('term_of_service') }}">
+    <a class="nav-link active " href="{{ path('term_of_service') }}">
     {{ 'NAV.TERMS'|trans }}
     </a>
 </li>
@@ -33,12 +36,12 @@ text-align: center;
 
              </li>
         <li class="nav-item {% if app.request.attributes.get('_route') == 'add_picture' %} active {% endif %}">
-            <a class="nav-link" href="{{ path('add_picture') }}">
+            <a class="nav-link active" href="{{ path('add_picture') }}">
                 {{ 'NAV.ADD_PICTURE'|trans }}
             </a>
         </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_logout') }}">
+            <a class="nav-link active" href="{{ path('app_logout') }}">
                 {{ 'NAV.LOGOUT'|trans }}
             </a>
         </li>
