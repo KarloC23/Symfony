@@ -3,31 +3,38 @@
 
 namespace App\Controller;
 
+use App\Repository\PictureRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class DefaultController
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
      * @return Response
      *
      */
-    public function homepageAction(Environment $twig)
-    {
+    public function homepageAction(
+        Environment $twig,
+        PictureRepository $repository
+
+    )  {
         return new Response(
-            $twig->render('Default/homepage.html.twig',
+            $twig->render(
+                'Default/homepage.html.twig',
                 [
-                    'color' => 'red',
-                    'itemList' => [1,4,7,15,23,45,67],
-                    'currentDate' => new \DateTime()
+                     'pictures' => $repository->findAll()
                 ]
             )
 
         );
 
     }
+
+
+
     /**
      * @Route("/terms", name="term_of_service")
      * @return Response

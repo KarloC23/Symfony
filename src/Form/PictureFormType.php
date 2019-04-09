@@ -41,7 +41,7 @@ class PictureFormType extends AbstractType
                     'label' => 'FORM.PICTURE.FILE.LABEL',
                     'mapped' => false,
                     'constraints' => new Image([
-                        'mimeTypes' => ['image/png', 'image/jpg'],
+                        'mimeTypes' => ['image/png', 'image/jpeg'],
                         'maxSize' => '5M',
                         'minWidth' => 640,
                         'minHeight' => 640

@@ -1,55 +1,63 @@
 <style>
-    .container {
-        margin-top: 2rem;
-    }
-    .nav-item{
-        list-style: none;
-    }
-    h1 {
-        font-weight: bold;
-        text-align: center;
-    }
+.container {
+margin-top: 2rem;
+}
+.nav-item{
+list-style: none;
+}
+h1 {
+font-weight: bold;
+text-align: center;
+}
 </style>
 
 <nav>
-    <h1>Numeri'pic</h1>
+<h1>Numeri'pic</h1>
 
-    <div class="container">
-    <ul class="nav nav-pills nav-fill">
-        <li class="nav-item {% if app.request.attributes.get('_route') == 'homepage' %} active {% endif %}">
-            <a class="nav-link" href="{{ path('homepage') }}">
-            {{ 'NAV.HOME'|trans }}
+<div class="container">
+<ul class="nav nav-pills nav-fill">
+<li class="nav-item {% if app.request.attributes.get('_route') == 'homepage' %} active {% endif %}">
+    <a class="nav-link" href="{{ path('homepage') }}">
+    {{ 'NAV.HOME'|trans }}
+    </a>
+</li>
+<li class="nav-item {% if app.request.attributes.get('_route') == 'term_of_service' %} active {% endif %}">
+    <a class="nav-link" href="{{ path('term_of_service') }}">
+    {{ 'NAV.TERMS'|trans }}
+    </a>
+</li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <li class ="nav-item">
+                {{ 'NAV.LOGGED_AS'|trans({ '%name%' : app.user.username}) }}
+
+             </li>
+        <li class="nav-item {% if app.request.attributes.get('_route') == 'add_picture' %} active {% endif %}">
+            <a class="nav-link" href="{{ path('add_picture') }}">
+                {{ 'NAV.ADD_PICTURE'|trans }}
             </a>
         </li>
-        <li class="nav-item {% if app.request.attributes.get('_route') == 'term_of_service' %} active {% endif %}">
-            <a class="nav-link" href="{{ path('term_of_service') }}">
-            {{ 'NAV.TERMS'|trans }}
+            <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_logout') }}">
+                {{ 'NAV.LOGOUT'|trans }}
             </a>
         </li>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class ="nav-item">
-                            {{ 'NAV.LOGGED_AS'|trans({ '%name%' : app.user.username}) }}
 
-                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">
-                            {{ 'NAV.LOGOUT'|trans }}
-                        </a>
-                    </li>
 
-                    {% else %}
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
-            <a class="nav-link" href="{{ path('app_login') }}">
-                {{ 'NAV.LOGIN'|trans }}
-            </a>
-        </li>
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'app_register' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('app_register') }}">
-                    {{ 'NAV.REGISTER'|trans }}
-                </a>
-            </li>
-        {% endif %}
-        </ul>
-    </div>
+            {% else %}
+    <li class="nav-item {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
+    <a class="nav-link" href="{{ path('app_login') }}">
+        {{ 'NAV.LOGIN'|trans }}
+    </a>
+</li>
+    <li class="nav-item {% if app.request.attributes.get('_route') == 'app_register' %} active {% endif %}">
+        <a class="nav-link" href="{{ path('app_register') }}">
+            {{ 'NAV.REGISTER'|trans }}
+        </a>
+    </li>
+
+{% endif %}
+</ul>
+</div>
 </nav>
 
