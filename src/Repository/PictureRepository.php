@@ -27,7 +27,7 @@ class PictureRepository extends ServiceEntityRepository
             return $paginator->paginate(
                 $queryBuilder->getQuery(),
                 $request->query->getInt('page', 1),
-                10
+                5
             );
     }
 }
